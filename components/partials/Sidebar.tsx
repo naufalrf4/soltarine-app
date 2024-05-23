@@ -1,33 +1,32 @@
+"use client";
+
 import React from "react";
-import {dashboardLinks} from '@/constants'
+import { dashboardLinks } from '@/constants';
+import Link from "next/link";
+import { Button } from "../ui/button";
+import { usePathname } from 'next/navigation';
 
 const Sidebar = () => {
-  return (
-    <div className="flex h-screen flex-col justify-between border-e bg-white">
-      <div className="px-4 py-6">
-        <span className="grid h-10 w-32 place-content-center rounded-lg bg-gray-100 text-xs text-gray-600">
-          Logo
-        </span>
+  const pathname = usePathname();
 
+  return (
+    <div className="flex h-screen flex-col px-4 justify-between border">
+      <div>
         <ul className="mt-6 space-y-1">
-            {dashboardLinks.map((link, index) => (
-                <li key={index}>
-                <a
-                    href={link.path}
-                    className="flex items-center gap-4 p-3 rounded-lg hover:bg-gray-100"
-                >
-                    <span className="text-gray-600">{link.icon}</span>
-    
-                    <span className="text-sm font-medium text-gray-900">
+          {dashboardLinks.map((link, index) => (
+            <li key={index}>
+              <Link href={link.path} passHref>
+                  <Button
+                    variant={pathname === link.path ? 'default' : 'ghost'}
+                    className="w-full text-left px-12"
+                  >
                     {link.title}
-                    </span>
-                </a>
-                </li>
-            ))}
+                  </Button>
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
-
-
     </div>
   );
 };

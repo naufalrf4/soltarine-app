@@ -1,6 +1,6 @@
-import Header from "@/components/partials/Header";
-import Footer from "@/components/partials/Footer";
-import Sidebar  from "@/components/partials/Sidebar";
+import Sidebar from "@/components/partials/Sidebar";
+import DashboardNavbar from "@/components/partials/DashboardNav";
+import ProtectedRoute from "@/components/ProtectedRoutes";
 
 export default function DashboardComponent({
   children,
@@ -8,9 +8,16 @@ export default function DashboardComponent({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex">
-      <Sidebar />
-      {children}
-    </div>
+    <ProtectedRoute>
+      <div className="flex flex-col h-screen">
+        <DashboardNavbar />
+        <div className="flex flex-1">
+          <Sidebar />
+          <main className="flex-1 bg-gray-100 overflow-y-auto">
+            {children}
+          </main>
+        </div>
+      </div>
+    </ProtectedRoute>
   );
 }

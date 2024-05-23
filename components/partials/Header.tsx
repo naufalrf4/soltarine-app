@@ -5,6 +5,9 @@ import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import Nav from "./Nav";
 import MobileNav from "./MobileNav";
+import { ThemeSwitch } from "./ThemeSwitcher";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 const Header = () => {
   const [header, setHeader] = useState(false);
@@ -45,6 +48,14 @@ const Header = () => {
             <div className="lg:hidden">
               <MobileNav />
             </div>
+          </div>
+          <div className="flex gap-2">
+          <Link href="/login">
+              <Button variant={"outline"} className="hidden lg:block">
+                Masuk
+              </Button>
+            </Link>
+            <ThemeSwitch />
           </div>
         </div>
       </div>

@@ -1,10 +1,9 @@
 const navLinks = [
   { title: "Beranda", path: "/" },
-  { title: "Artikel", path: "/blogs" },
   { title: "Tentang", path: "/about" },
+  { title: "Artikel", path: "/blogs" },
   { title: "Galeri", path: "/gallery" },
   { title: "Kontak", path: "/contact" },
-  { title: "Data", path: "/dashboard"},
 ];
 
 const dashboardLinks = [

@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/partials/Header";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AuthProvider } from "@/context/AuthContext";
 
 const mainFont = Poppins({
   subsets: ["latin"],
@@ -13,7 +14,8 @@ const mainFont = Poppins({
 
 export const metadata: Metadata = {
   title: "SoltarinE",
-  description: "SoltarinE adalah platform untuk belajar pemrograman secara online",
+  description:
+    "SoltarinE adalah platform untuk belajar pemrograman secara online",
 };
 
 export default function RootLayout({
@@ -24,14 +26,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${mainFont.className}`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );
