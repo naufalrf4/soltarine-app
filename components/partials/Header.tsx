@@ -49,9 +49,9 @@ const Header = () => {
               <MobileNav />
             </div>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center justify-center">
           <Link href="/login">
-              <Button variant={"outline"} className="hidden lg:block">
+              <Button className="hidden lg:block">
                 Masuk
               </Button>
             </Link>

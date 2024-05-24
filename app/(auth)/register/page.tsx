@@ -42,7 +42,7 @@ const Register = () => {
             height={128}
           />
         </Link>
-        <h1 className="font-semibold text-xl">Masuk ke SoltarinE</h1>
+        <h1 className="font-semibold text-xl">Daftar Akun SoltarinE</h1>
         <form onSubmit={handleRegister} className="space-y-6">
           <Input
             type="email"

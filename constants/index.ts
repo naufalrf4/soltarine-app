@@ -8,9 +8,27 @@ const navLinks = [
 
 const dashboardLinks = [
   { title: "Dashboard", path: "/dashboard" },
-  { title: "Data", path: "/data" },
-  { title: "Pengguna", path: "/users" },
-  { title: "Pengaturan", path: "/settings" },
+  { title: "Data Baterai", path: "/batterydata" },
+  { title: "Data Cahaya", path: "/lightdata" },
+];
+
+const galleryImages = [
+  {
+    src: "https://source.unsplash.com/random/300x300",
+    alt: "Gambar 1",
+  },
+  {
+    src: "https://source.unsplash.com/random/300x301",
+    alt: "Gambar 2",
+  },
+  {
+    src: "https://source.unsplash.com/random/300x302",
+    alt: "Gambar 3",
+  },
+  {
+    src: "https://source.unsplash.com/random/300x303",
+    alt: "Gambar 4",
+  },
 ];
 
 const heroSection = {
@@ -29,4 +47,4 @@ const heroSection = {
   },
   };
 
-export { navLinks, heroSection, dashboardLinks };
+export { navLinks, heroSection, dashboardLinks, galleryImages };
