@@ -14,27 +14,31 @@ const dashboardLinks = [
 
 const galleryImages = [
   {
-    src: "https://source.unsplash.com/random/300x300",
-    alt: "Gambar 1",
+    src: "/videos/vid_prog.mp4",
+    alt: "Video 1",
+    type: "video",
+    autoplay: true,
   },
   {
-    src: "https://source.unsplash.com/random/300x301",
-    alt: "Gambar 2",
+    src: "/videos/vid_prog.mp4",
+    alt: "Video",
+    type: "video",
   },
   {
     src: "https://source.unsplash.com/random/300x302",
     alt: "Gambar 3",
+    type: "image",
   },
   {
     src: "https://source.unsplash.com/random/300x303",
     alt: "Gambar 4",
+    type: "image",
   },
 ];
 
 const heroSection = {
   title: "Soltarine.........",
-  description:
-    "Website ini..............",
+  description: "Website ini..............",
   button: {
     label: "Lihat Data",
     path: "/dashboard",
@@ -45,6 +49,6 @@ const heroSection = {
     src: "/images/hero-image.png",
     alt: "hero",
   },
-  };
+};
 
 export { navLinks, heroSection, dashboardLinks, galleryImages };
