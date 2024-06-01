@@ -1,5 +1,3 @@
-import { User } from "firebase/auth";
-
 export type navProps = {
   containerStyles?: React.CSSProperties | string;
   linkStyles?: React.CSSProperties | string;
@@ -7,6 +5,41 @@ export type navProps = {
 };
 
 export interface AuthContextType {
-  user: User | null;
+  user: UserType | null;
+  loading: boolean;
+}
+
+export interface LdrLight {
+  bottom: number;
+  left: number;
+  right: number;
+  top: number;
+}
+
+export interface DataPoint {
+  current: number;
+  energy: number;
+  ldr_light: LdrLight;
+  power: number;
+  voltage: number;
+}
+
+export interface ApiData {
+  data: {
+    [timestamp: string]: DataPoint;
+  };
+}
+
+export interface UserType {
+  uid: string;
+  name: string;
+  email: string;
+  phoneNumber: number | string;
+  role: 'admin' | 'user';
+  photoURL: string | null;
+}
+
+export interface AuthContextType {
+  user: UserType | null;
   loading: boolean;
 }

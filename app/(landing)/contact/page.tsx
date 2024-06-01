@@ -131,7 +131,7 @@ const Contact = () => {
                     placeholder="Your Phone"
                   />
                   <ContactTextArea
-                    row="6"
+                    row={6}
                     placeholder="Your Message"
                     name="details"
                     defaultValue=""
@@ -964,7 +964,17 @@ const Contact = () => {
 
 export default Contact;
 
-const ContactTextArea = ({ row, placeholder, name, defaultValue }) => {
+const ContactTextArea = ({
+  row,
+  placeholder,
+  name,
+  defaultValue,
+}: {
+  row: number;
+  placeholder: string;
+  name: string;
+  defaultValue: string;
+}) => {
   return (
     <>
       <div className="mb-6">
@@ -980,7 +990,15 @@ const ContactTextArea = ({ row, placeholder, name, defaultValue }) => {
   );
 };
 
-const ContactInputBox = ({ type, placeholder, name }) => {
+const ContactInputBox = ({
+  type,
+  placeholder,
+  name,
+}: {
+  type: string;
+  placeholder: string;
+  name: string;
+}) => {
   return (
     <>
       <div className="mb-6">

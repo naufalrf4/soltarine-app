@@ -12,6 +12,8 @@ import { Button } from "@/components/ui/button";
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
   const { user } = useAuth();
@@ -19,7 +21,7 @@ const Register = () => {
   const handleRegister = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      await registerWithEmail(email, password);
+      await registerWithEmail(email, password, name, `+62${phoneNumber}`);
       router.push("/dashboard");
     } catch (err: any) {
       setError(err.message);
@@ -45,6 +47,14 @@ const Register = () => {
         <h1 className="font-semibold text-xl">Daftar Akun SoltarinE</h1>
         <form onSubmit={handleRegister} className="space-y-6">
           <Input
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            className="w-full p-2 border rounded"
+          />
+          <Input
             type="email"
             placeholder="Email"
             value={email}
@@ -60,18 +70,28 @@ const Register = () => {
             required
             className="w-full p-2 border rounded"
           />
+          <div className="flex">
+            <span className="flex items-center px-2 bg-gray-200 border border-r-0 rounded-l-md">+62</span>
+            <Input
+              type="number"
+              placeholder="Phone Number"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              required
+              className="w-full p-2 border rounded-r"
+            />
+          </div>
           <Button type="submit" className="w-full">
             Register
           </Button>
           {error && <p className="text-red-500">{error}</p>}
-
-          <div className="text-sm">
+        </form>
+        <div className="text-sm">
           <p className='mt-8 text-center'>
             Sudah memiliki akun?{' '}
              <Link href="/login" className="text-primary">Masuk</Link>
           </p>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   );

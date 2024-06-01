@@ -1,37 +1,42 @@
-export interface BatteryData {
-    charging_time: number;
-    percentage: number;
-    remaining: number;
-    used_percentage: number;
-  }
-  
-  export interface CurrentData {
-    ampere: number;
-    voltage: number;
-  }
-  
-  export interface ApiData {
-    battery: BatteryData;
-    current: CurrentData;
-    efficiency: number;
-    energy_production: number;
-    temperature: number;
-  }
-  
-  export async function fetchData(): Promise<ApiData> {
-    const API_URL = 'http://localhost:3001/api/data';
-    const BEARER_TOKEN = 'soltarine-tek59';
-  
-    const response = await fetch(API_URL, {
-      headers: {
-        'Authorization': `Bearer ${BEARER_TOKEN}`
-      }
-    });
-  
-    if (!response.ok) {
-      throw new Error('Failed to fetch data');
+import { db } from '@/utils/firebase';
+import { ref, onValue } from 'firebase/database';
+import { SetStateAction } from 'react';
+
+interface LdrLightData {
+  bottom: number;
+  left: number;
+  right: number;
+  top: number;
+}
+
+interface FirebaseData {
+  current: number;
+  energy: number;
+  ldr_light: LdrLightData;
+  power: number;
+  voltage: number;
+}
+
+interface ApiData {
+  latestTimestamp: SetStateAction<number>;
+  data: {
+    [timestamp: string]: FirebaseData;
+  };
+}
+
+export function fetchDataRealTime(callback: (data: ApiData) => void) {
+  const dbRef = ref(db, 'data');
+  onValue(dbRef, (snapshot) => {
+    if (snapshot.exists()) {
+      const data: ApiData = {
+        data: snapshot.val(),
+        latestTimestamp: 0
+      };
+      callback(data);
+    } else {
+      console.error('No data available');
     }
-  
-    return response.json();
-  }
-  
+  }, (error) => {
+    console.error('Error fetching real-time data:', error);
+  });
+}

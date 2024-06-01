@@ -10,7 +10,7 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="flex h-screen flex-col px-4 justify-between border">
+    <div className="hidden md:flex h-screen flex-col px-4 justify-between border">
       <div>
         <ul className="mt-6 space-y-1">
           {dashboardLinks.map((link, index) => (
